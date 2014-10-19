@@ -1,0 +1,146 @@
+<!--
+  Copyright 2014 IBM Corp.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-template-name="SparkCore in">
+    <div class="form-row">
+        <label for="node-input-coreid"><i class="icon-flag"></i> Core ID</label>
+        <input type="text" id="node-input-coreid" placeholder="coreid">
+    </div>
+    <div class="form-row">
+        <label for="node-input-accesstoken"><i class="icon-tag"></i> Token</label>
+        <input type="text" id="node-input-accesstoken" placeholder="accesstoken">
+    </div>
+	<br/>
+	<div class="form-row">
+        <label for="node-input-method"><i class="fa fa-tasks"></i> Method</label>
+        <select type="text" id="node-input-method" style="width:72%;">
+			<option value="function">Call a function</option>
+			<option value="variable">Read a Variable</option>
+			<option value="subscribe">Subscribe to Event</option>
+        </select>
+    </div>
+	<div class="form-row">
+        <label for="node-input-fve"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-fve" placeholder="name of function/variable/event">
+    </div>
+	<div class="form-row">
+        <label for="node-input-param"><i class="icon-tag"></i> Parameter</label>
+        <input type="text" id="node-input-param" placeholder="function parameter">
+    </div>
+	<br/>
+	<div class="form-row">
+        <label for="node-input-repeat"><i class="icon-tag"></i> Repeat</label>
+        <input type="text" id="node-input-repeat" placeholder="repeat">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="SparkCore in">
+    <p><b>Spark Core Input</b></p>
+	<p>
+    <p>This node allows you to call a Spark Core function, read a variable or listen for incoming events.</p>
+	<p><i>Usage</i></p>
+	<p/>
+	<p><b>Call a function</b></p>
+	<p>Select <i>Call a function</i> from the Method dropdown list. Enter name of the function in Name editbox and enter Parameter value if any.<p>
+	<p>The <b>msg.raw</b> contains the return JSON string, <b>msg.payload</b> contains the return value of the function, <b>msg.id</b> contains the core id, <b>msg.name</b> contains the name of the core, <b>msg.last_app</b> contains the last_app value and <b>msg.connected</b> contains the connected value.
+	<p/>
+	<p><b>Read a variable</b></p>
+	<p>Select <i>Read a Variable</i> from the Method dropdown list. Enter name of the variable in Name editbox.<p>
+	<p>The <b>msg.raw</b> contains the return JSON string, <b>msg.payload</b> contains the value of the variable, <b>msg.name</b> contains the name of the core.</p>
+	<p/>
+	<p><b>Subscribe to SSE</b></p>
+	<p>Select <i>Subscribe to Events</i> from the Method dropdown list. Enter name of the SSE in Name editbox.<p>
+	<p>The <b>msg.raw</b> contains the return JSON string, <b>msg.payload</b> contains the event data, <b>msg.ttl</b> contains the ttl value, <b>msg.published_at</b> contains the published data and time and <b>msg.coreid</b> contains the core id.
+    <p>For further info see the <a href="https://spark.io/" target="_new">Spark website</a>.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('SparkCore in',{
+        category: 'input',
+        defaults: {
+            coreid: {value:"", required: true},
+            accesstoken: {value:"", required: true},
+			method: {value:"function", required: true},
+			fve: {value:"", required: true},
+			param: {value:""},
+			repeat: {value:10}
+        },
+        color:"#00ACED",
+        inputs:0,
+        outputs:1,
+        icon: "arrow.png",
+        label: function() {
+            return this.name|| this.method + " - " + this.fve;
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="SparkCore out">
+    <div class="form-row">
+        <label for="node-input-coreid"><i class="icon-flag"></i> Core ID</label>
+        <input type="text" id="node-input-coreid" placeholder="coreid">
+    </div>
+    <div class="form-row">
+        <label for="node-input-accesstoken"><i class="icon-tag"></i> Token</label>
+        <input type="text" id="node-input-accesstoken" placeholder="accesstoken">
+    </div>
+	<br/>
+	<div class="form-row">
+        <label for="node-input-fve"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-fve" placeholder="name of function">
+    </div>
+	<div class="form-row">
+        <label for="node-input-param"><i class="icon-tag"></i> Parameter</label>
+        <input type="text" id="node-input-param" placeholder="function parameter, leave blank to send message payload">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="SparkCore out">
+    <p><b>Spark Core Input</b></p>
+	<p>
+    <p>This node allows you to call a Spark Core function, read a variable or listen for incoming events.</p>
+	<p><i>Usage</i></p>
+	<p/>
+	<p><b>Call a function</b></p>
+	<p>Select <i>Call a function</i> from the Method dropdown list. Enter name of the function in Name editbox and enter Parameter value if any.<p>
+	<p>The <b>msg.raw</b> contains the return JSON string, <b>msg.payload</b> contains the return value of the function, <b>msg.id</b> contains the core id, <b>msg.name</b> contains the name of the core, <b>msg.last_app</b> contains the last_app value and <b>msg.connected</b> contains the connected value.
+	<p/>
+    <p>For further info see the <a href="https://spark.io/" target="_new">Spark website</a>.</p>
+</script>
+<script type="text/javascript">
+    RED.nodes.registerType('SparkCore out',{
+        category: 'output',
+        defaults: {
+            coreid: {value:"", required: true},
+            accesstoken: {value:"", required: true},
+			fve: {value:"", required: true},
+			param: {value:""}
+        },
+        color:"#00ACED",
+        inputs:1,
+        outputs:0,
+        icon: "arrow.png",
+        label: function() {
+            return this.name||"function" + " - " + this.fve;
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>

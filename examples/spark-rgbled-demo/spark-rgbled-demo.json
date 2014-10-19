@@ -1,0 +1,53 @@
+[  
+   {  
+      "id":"fe590519.01a6f8",
+      "type":"mqtt-broker",
+      "broker":"iot.eclipse.org",
+      "port":"1883",
+      "clientid":""
+   },
+   {  
+      "id":"70278ee5.8fd87",
+      "type":"mqtt in",
+      "name":"",
+      "topic":"mqttsample",
+      "broker":"fe590519.01a6f8",
+      "x":260,
+      "y":123,
+      "z":"bd7a6b50.428598",
+      "wires":[  
+         [  
+            "6dd8a418.92275c",
+            "a61d1e73.59e2e"
+         ]
+      ]
+   },
+   {  
+      "id":"6dd8a418.92275c",
+      "type":"debug",
+      "name":"",
+      "active":true,
+      "console":"false",
+      "complete":"false",
+      "x":457,
+      "y":194,
+      "z":"bd7a6b50.428598",
+      "wires":[  
+
+      ]
+   },
+   {  
+      "id":"a61d1e73.59e2e",
+      "type":"SparkCore out",
+      "coreid":"core.ha",
+      "accesstoken":"5993c11b4db4e5a41967ed8c47d205093479c09f",
+      "fve":"setrgb",
+      "param":"",
+      "x":457,
+      "y":56,
+      "z":"bd7a6b50.428598",
+      "wires":[  
+
+      ]
+   }
+]
