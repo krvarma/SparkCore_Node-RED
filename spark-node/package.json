@@ -1,0 +1,19 @@
+{
+  "name": "sparknode",
+  "version": "0.1.0",
+  "description": "Spark Core node for Node-RED",
+  "main": "sparkcore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krvarma/SparkCore_Node-RED/tree/master/spark-node"
+  },
+  "keywords": [
+    "sparkcore",
+    "node-red"
+  ],
+  "author": "Krishnaraj Varma <krvarma@gmail.com> (http://devlper.com)",
+  "license": "ISC"
+}

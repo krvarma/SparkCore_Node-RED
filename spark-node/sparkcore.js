@@ -104,7 +104,7 @@ module.exports = function(RED) {
 						sparkmodule.send(msg);
 					}
 				}
-			)
+			);
 		});
 		
 		this.on("getvariable", function(){
@@ -126,7 +126,7 @@ module.exports = function(RED) {
 						sparkmodule.send(msg);
 					}
 				}
-			)
+			);
 		});
     }
 	
@@ -177,7 +177,7 @@ module.exports = function(RED) {
 						sparkmodule.send(msg);
 					}
 				}
-			)
+			);
 		});
     }
 	
